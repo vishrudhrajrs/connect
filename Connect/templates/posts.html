@@ -1,0 +1,57 @@
+{% extends "base.html"%}
+{%block title%}
+<link href="{{ url_for('static', filename='styles/posts.css')}}" rel="stylesheet">
+{%endblock%}
+{% block content%}
+<div class="content">
+    <div class="heading">
+        <h2>My Posts</h2>
+        <hr>
+    </div>
+    <div class="myposts">
+    {%if user.email in admin%}
+    {%for post in posts%}
+        <div class="card">
+            <div class="cardimgholder">
+                <img src="{{post.photo}}" class="cardimg">
+            </div>
+            <div class="textholder">
+                <div class="headtext">
+                    {{post.jobname}}
+                </div>
+                <div class="buttonholder">
+                    <form action="/mypost/{{post.id}}/edit">
+                        <button type="submit" class="btn btn-primary mbtn">Edit</button>
+                    </form>
+                    <form action="/myposts/delete/{{post.id}}">
+                        <button type="submit" class="btn btn-danger mbtn">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    {%endfor%}
+    {%else%}
+    {%for post in myposts%}
+        <div class="card">
+            <div class="cardimgholder">
+                <img src="{{post.photo}}" class="cardimg">
+            </div>
+            <div class="textholder">
+                <div class="headtext">
+                    {{post.jobname}}
+                </div>
+                <div class="buttonholder">
+                    <form action="/mypost/{{post.id}}/edit">
+                        <button type="submit" class="btn btn-primary mbtn">Edit</button>
+                    </form>
+                    <form action="/myposts/delete/{{post.id}}">
+                        <button type="submit" class="btn btn-danger mbtn">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    {%endfor%}
+    {%endif%}
+    </div>
+</div>
+{%endblock%}

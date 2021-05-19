@@ -1,0 +1,45 @@
+{%extends "base.html"%}
+{%block title%}
+<link rel="stylesheet" href="../static/styles/profile_edit.css">
+{%endblock%}
+{%block content%}
+<div class="content">
+    <div class="cheading">
+        <h2>Edit your Profile</h2>
+        <hr>
+    </div>
+    {%if msg != ""%}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{msg}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {%endif%}
+    <div class="editsec">
+        <form method="POST" autocomplete="off">
+            <div class="form-group">
+              <label for="exampleFormControlInput1" class="mlabel">Name</label>
+              <input type="text" autocomplete="off" value="{{user.name}}"  class="form-control" name="name" id="exampleFormControlInput1" placeholder="Name">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1" class="mlabel">Email</label>
+                <input type="email" autocomplete="off" value="{{user.email}}"  class="form-control" name="email" id="exampleFormControlInput1" placeholder="name@example.com">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1" class="mlabel">Old Password</label>
+                <input type="password" autocomplete="off"  class="form-control" name="old_password" id="exampleFormControlInput1" required placeholder="Required">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1" class="mlabel">New Password</label>
+                <input type="password" autocomplete="off"  class="form-control" name="new_password" id="exampleFormControlInput1" placeholder="Fill Only if you want to change password">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1" class="mlabel">Confirm Password</label>
+                <input type="password" autocomplete="off"  class="form-control" name="new_confirm_password" id="exampleFormControlInput1" placeholder="Fill Only if you want to change password">
+            </div>
+            
+            <button type="submit" class="btn btn-primary mbtn">Make Changes</button>
+        </form>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+{%endblock%}

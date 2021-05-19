@@ -1,0 +1,108 @@
+body{
+    background-image:linear-gradient(#000000ee, #323335);
+    /* background-color:rgba(53, 51, 51, 0.815); */
+}
+
+.button-container{
+    margin-top: 20px;
+}
+
+.button{
+    width:250px;
+    color:white !important;
+    border:none;
+    background-color: #00000067;
+    border-radius: 15px;
+    font-size: 20px;
+    font-family: "Inter", sans-serif;
+    letter-spacing: 2px;
+    padding:8px 20px;
+}
+
+.header { 
+    display:flex; 
+    justify-content:space-around;
+    align-items:center;
+    height:90vh;
+    color:white;
+    background: linear-gradient(to right bottom, #000000a9, #43434386, #000000a9), 
+    url(../img/header_img1.jpg) 
+    no-repeat center center fixed; 
+    background-size: cover;
+    /* background-color: black; */
+  }
+
+  .heading{
+      font-size: 60px;
+      font-family: 'Krona One', sans-serif;
+  }
+  .header-content{
+      margin-bottom: 100px;
+      margin-right: 80px;
+      display:flex;
+      flex-direction: column;
+      /* justify-content:center; */
+      align-items:center;
+  }
+  .tag-line{
+      font-size: 20px;
+      color: rgba(182, 182, 182, 0.842);
+      
+  }
+  .home-body{
+      background-color:white;
+      /* background-image: linear-gradient(#2193b098, #6dd5ed83); */
+      margin: 50px;
+      margin-top: -100px;
+      color:black;
+      display: flex;
+      flex-wrap: wrap;
+  }
+
+  .home-img-container{
+      margin-top: 35px;
+      margin-left: 40px;
+  }
+  .home-img{
+      height: 350px;
+      margin-top: 0px;
+  }
+  .home-img2{
+    height: 370px;
+    margin-top: 0px;
+    margin-bottom: 90px;
+}
+  .part{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items:center;
+      margin-bottom:0px;
+  }
+  .home-text{
+      height: auto;
+      margin-top: auto;
+      padding-top: 0px;
+      margin-bottom: auto;
+      width: 500px;
+      display: flex;
+      font-size: 20px;
+      justify-content: center;
+      font-family: "Roboto", sans-serif;
+      font-weight: bold;
+      text-align:center
+      }
+
+      .home-text-2{
+        height: auto;
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left: 80px;
+        width: 500px;
+        display: flex;
+        font-size: 20px;
+        justify-content: center;
+        font-family: "Roboto", sans-serif;
+        font-weight: bold;
+        text-align:center
+        }

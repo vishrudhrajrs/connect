@@ -1,0 +1,35 @@
+body{
+    min-height: 100vh;
+    background-image: linear-gradient(to right bottom, #04619f,#000000);
+    
+}
+.content{
+    background-color: white;
+    font-family: "Roboto";
+    margin: 30px;
+    padding:60px;
+    min-height: 80vh;
+}
+
+.resume-holder{
+    display: flex;
+    align-items: center;
+    margin-top: 25px;
+}
+
+.resumelabel{
+    margin-right: 0px;
+    margin-top: 7px;
+    width: 120px;
+}
+
+.texta{
+    resize:none;
+}
+
+.mailbtn{
+    border-radius: 5px !important;
+    margin-top: 40px;
+    width:120px;
+    margin-left: 90%;
+}

@@ -1,0 +1,54 @@
+{%extends "base.html"%}
+{% block title%}
+<link rel="stylesheet" href="../static/styles/profile.css" >
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
+{%endblock%}
+{% block content %}
+<div class="content">
+    <div class= "profile-img-holder">
+        <div class="profile-img">
+          {{user.name[0]}}
+        </div>
+        <div class="type ttext">
+            <span>{{user.name}}</span>
+        </div>
+        <div class="type last1">
+            {%if user.employer%}
+              Employer
+            {%else%}
+              Employee
+            {%endif%}
+        </div>
+    </div>
+    <div class="profile-head">
+        <div class="proe">
+        <h2>My Profile</h2>
+        <div class="edit">
+          <form action="/profile/edit">
+            <button class="edit-button" id="button"></button>
+          </form>
+        </div>
+        </div>
+        <hr>
+        <div class="profile-content">
+        <table class="table">
+            <tbody>
+              <tr>
+                <th scope="row" colspan="3">Name</th>
+                <td>{{user.name}}</td>
+              </tr>
+              <tr>
+                <th scope="row" colspan="3">Email</th>
+                <td>{{user.email}}</td>
+              </tr>
+              <tr>
+                <th scope="row" colspan="3">Password</th>
+                <td >{{"*"*8}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
+
+</div>
+{%endblock%}

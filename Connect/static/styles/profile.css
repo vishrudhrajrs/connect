@@ -1,0 +1,128 @@
+body{
+    min-height: 100vh;
+    background-image: linear-gradient(to right bottom, #04619f,#000000);
+    font-family:"Montserrat";
+
+}
+
+.content{
+    background-color:transparent;
+    margin: 40px;
+    min-height: 90vh;
+    padding:60px;
+    display:flex;
+    align-items:center;
+    margin-top: 0px;
+    /* flex-direction: column; */
+}
+
+.profile-img{
+    border-radius: 50%;
+    background-color: #0d6efd;
+    width:120px;
+    height:120px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    color:white;
+    font-size: 65px;
+}
+
+.profile-head{
+    font-size: 25px;
+    font-weight: 400;
+}
+.profile-text{
+    font-size: 25px;
+    font-weight: 300;
+}
+.profile-content{
+    
+    display: flex;
+    flex-direction:column;
+    align-items: flex-start;
+    /* width: 60%; */
+}
+.profile-head{
+    background-color:white;
+    padding:40px;
+    padding-top: 20px;
+    margin-left: 40px;
+    height:100%;
+    width: 80vw;
+}
+.table{
+    margin-left: 15px;
+    width:90%;
+}
+th{
+    margin-right: 400px;
+}
+td{
+    width:200px !important;
+}
+
+.ttext{
+    width: 300px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.profile-img-holder{
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2), 0 6px 20px 0 rgba(216, 214, 214, 0.19);
+    padding: 70px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+    border-radius: 50px;
+    padding-top:50px ;
+    padding-bottom: 20px;
+    /* height: 330px; */
+    width:auto;
+
+}
+
+.type{
+    font-size: 30px;
+    font-weight: 400;
+    margin-top: 50px;
+    letter-spacing:1px;
+}
+.last1{
+    margin-top: 5px;
+    font-size: 25px;
+    font-weight: 250;
+}
+
+.edit-button{
+    background: url(../img/edit.png);
+    background-size: cover;
+    border: none;
+    width:30px;
+    height:30px;
+    transition: all 0.5s;
+    outline: none;
+}
+.edit-button:hover{
+    transform: scale(1.25);
+    outline: none;
+}
+.edit-button:active{
+    transition: all 0s;
+    transform: scale(1.05);
+    transition: all 0.5;
+    outline: none;
+}
+
+.proe{
+    display: flex;
+    justify-content:space-between;
+}
+
+.ttext>span{
+    width:auto;
+    white-space: nowrap;
+}

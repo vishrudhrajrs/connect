@@ -1,0 +1,100 @@
+body{
+    background-image: linear-gradient(to right bottom, #04619f,#000000);
+    /* padding: 20px; */
+
+    
+}
+
+header{
+    margin: 20px;
+    text-align-last: center;
+    font-size: 0.8cm;
+    color: cornsilk;
+}
+
+
+.feedback-form {
+    /* max-height: 100vh; */
+    display: flex;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+    /* justify-content: start; */
+    align-items: flex-end;
+    /* flex-shrink: 10; */
+}
+
+/* .Welcome{
+    margin-right: 50px;
+    font-size: 1.5cm;
+    color: cornsilk;
+    font-weight: bold;
+    font-family: "Roboto", sans-serif;
+    text-align: right;
+
+} */
+.Name, .Email{
+    margin: 50px 50px 0px 0px;
+    width:35vw;
+}
+
+.form-label{
+    color: darkgrey;
+    font-size: 5mm;
+}
+
+.Content{
+
+    margin: 50px;
+    
+    margin-top: 0px;
+    width:35vw;
+    flex-grow: 1;
+    /* flex-shrink: 3;  */
+}
+
+.image{
+    flex-shrink: 10;
+    margin-right: 60px;
+    /* height: 1px; */
+    /* width: 1px; */
+}
+
+
+
+.btn-primary{
+    justify-content: flex-start;
+    margin-top: 0px;
+    
+}
+
+.mbtn{
+    width:120px;
+    margin:50px;
+    margin-bottom: 60px;
+    margin-top: 0px;
+    border-radius: 15px !important;
+
+}
+
+.tm{
+    resize: none;
+}
+
+.thanks{
+    margin: 40px;
+    text-align-last: Left;
+    font-size: 1cm;
+    color: cornsilk;
+}
+.new{
+    font-size: 7mm;
+}
+
+.inimg{
+    width:500px;
+}
+.flexm{
+    display: flex;
+    align-items:center !important;
+    justify-content:center;
+}

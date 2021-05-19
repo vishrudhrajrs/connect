@@ -1,0 +1,199 @@
+body{
+    min-height: 100vh;
+    background-image: linear-gradient(to right bottom, #04619f,#000000);
+    
+}
+.content{
+    background-color: white;
+    font-family: "Roboto";
+    margin: 30px;
+    padding:60px
+}
+
+.jobs{
+    display: flex;
+    flex-direction: column;
+}
+.img-text{
+    display: flex;
+}
+
+.job{
+    padding: 10px;
+    /* padding-top: 20px; */
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.job:hover{
+    background-color:rgb(218, 218, 218);
+}
+.job_text{
+    width:60%;
+    display:flex;
+    flex-direction:column;
+    margin-left:40px;
+}
+.job_logo{
+    height: 150px;
+    width:150px;
+    border-radius:50%;
+
+}
+.imgholder{
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.img{
+    height:150%;
+}
+.salary-head{
+    margin-left: 40px;
+    font-size: 20px;
+    font-weight: bolder;
+    display: flex;
+    flex-direction:column;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+.info{
+    margin-left: 25px;
+}
+.info-head{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.head{
+    display: flex;
+    justify-content: space-between;
+}
+
+hr{
+    margin-top: 2px;
+    margin-bottom: 25px;
+}
+
+.plus{
+    position: fixed;
+    border-radius: 50%;
+    transition: transform 0.75s;
+    bottom:20px;
+    right:45px;
+    background-color: rgba(255, 255, 255, 0);
+}
+.plus-button{
+    background: url(../img/plus1.png);
+    background-size: cover;
+    height: 50px;
+    width: 50px;
+    border-radius:50%;
+    border:1px solid rgb(44, 86, 224);
+}
+.plus:hover{
+    transform : scale(1.20);
+}
+
+.plus:active{
+    transition: transform 0s;
+    transform:scale(1.05);
+}
+
+.modal1{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.521);
+    display: none;
+    justify-content:center;
+    align-items: center;
+}
+
+.post{
+    background-color:white;
+    width: 70vw;
+    height: 80vh;
+}
+.mypost{
+    width: 100%;
+    height: 80px;
+    background-color:#007FFF;
+    color:white;
+    font-family: "Montserrat";
+    font-weight: bolder;
+    padding: 10px 25px;
+    font-size: 40px;
+    letter-spacing: 2px;
+    display: flex;
+    justify-content:space-between;
+    align-items:center
+}
+
+.x{
+    margin-left: auto;
+    background: transparent;
+    background: url(../img/remove1.svg);
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    transition: transform 0.75s;
+    border:none;
+    font-size: 50px;
+}
+.xholder{
+    border-radius:50%;
+    height: 30px;
+    width: 30px;
+    background-color:white;
+    margin:0px;
+    padding:0px;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
+.x:hover{
+    transform : scale(1.25)
+}
+
+.x:active{
+    transition: transform 0s;
+    transform:scale(1.05);
+}
+
+.modal-content{
+    height:70vh;
+    padding:20px 50px;
+    overflow:scroll;
+}
+
+.modal-content::-webkit-scrollbar {
+    display: none;
+  }
+
+.otextarea{
+    margin-top: 25px !important;
+    height:100px !important;
+    margin-left: 0px;
+}
+textarea{
+    resize: none;
+}
+
+.postbtn{
+    border-radius: 15px;
+    width: 100px;
+    margin-left: 88%;
+}
+
+
+.cnow{
+    margin-bottom: 75px;
+}
+.cnow-btn{
+    width: 150px;
+    border-radius: 25px;
+}

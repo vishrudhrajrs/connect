@@ -1,0 +1,32 @@
+{%extends "base.html"%}
+{% block title %}
+    <link href="{{ url_for('static', filename='styles/edit.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='styles/style.css')}}" rel="stylesheet">
+{%endblock%}
+{% block content%}
+
+<div class="content">
+    <div class="cheading">
+        <h2>Edit your Post</h2>
+        <hr>
+    </div>
+    <div class="editsec">
+        <form method="POST">
+            <div class="form-group">
+              <label for="exampleFormControlInput1" class="mlabel">Name</label>
+              <input type="text" value="{{post.jobname}}" required class="form-control" name="name" id="exampleFormControlInput1" placeholder="name@example.com">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1" class="mlabel">Salary</label>
+                <input type="text" value="{{post.salary}}" required class="form-control" name="salary" id="exampleFormControlInput1" placeholder="name@example.com">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1" class="mlabel">Description</label>
+                <textarea required class="form-control ta" id="exampleFormControlTextarea1" name="desc" rows="5">{{post.info}}</textarea>
+            </div>
+            <button type="submit" class="btn btn-primary mbtn">Make Changes</button>
+        </form>
+    </div>
+</div>
+
+{%endblock%}

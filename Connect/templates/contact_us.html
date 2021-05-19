@@ -1,0 +1,53 @@
+{%extends "base.html"%}
+
+<!-- CSS -->
+
+{% block title %}
+<link href="../static/styles/contact_us.css" rel="stylesheet">
+{%endblock%}
+
+
+<!-- BODY -->
+{%block content%}
+
+<header>
+    Facing some problem or have some suggestions.<br> Feel free to send us a feedback<br>
+
+</header>
+
+<!-- <div class="Welcome">
+    Hi There,
+</div> -->
+<div class="flexm">
+    <div class="image">
+        <img src="../static/img/feedback_2.png" class="inimg">
+    </div>
+
+
+    <form action='/contact_us' method='POST' class="feedback-form">
+
+        
+
+        <div class="Name">
+            <label for="NAMAE" class="form-label"><b>Enter your Name:</b></label>
+            <input type="text" class="form-control" name='NAME' id="NAME" placeholder="Name" aria-label="name">
+        </div>
+        <br>
+        <div class="Email">
+            <label for="EMAIL" class="form-label"><b>Enter your email:</b><br></label>
+            <input type="email" class="form-control" name='EMAIL' id="EMAIL" placeholder="name@example.com">
+        </div><br>
+        <br>
+        <div class="Content">
+            <label for="CONTENT" class="form-label"><b>Feedback:</b></label>
+            <textarea class="form-control tm" name="CONTENT" id="CONTENT" rows="5"
+                placeholder="Enter your valuable feedback"> </textarea>
+        </div>
+
+        <input class="btn btn-primary mbtn" type="submit" value="Submit">
+
+
+    </form>
+</div>
+
+{%endblock%}

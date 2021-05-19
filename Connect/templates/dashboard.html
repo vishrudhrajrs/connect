@@ -1,0 +1,74 @@
+{%extends "base.html"%}
+{%block title%}
+<link rel="stylesheet" href="../static/styles/dashboard.css">
+{%endblock%}
+{%block content%}
+<div class="content">
+    <div class="head1">
+        <div class="topic">
+            <div class="dashboard-head">
+                <div class="dash-text">Total Users</div>
+                <img src="../static/img/bar-chart.png" class="dash-img">
+            </div>
+            <div class="count color1">
+                {{user_length}}
+            </div>
+        </div>
+        <div class="topic">
+            <div class="dashboard-head">
+                <div class="dash-text">Total Posts</div>
+                <img src="../static/img/paper-plane.png" class="dash-img">
+            </div>
+            <div class="count color2">
+                {{post_length}}
+            </div>
+        </div>
+        <div class="topic">
+            <div class="dashboard-head ">
+                <div class="dash-text">Total mails</div>
+                <img src="../static/img/email.png" class="dash-img">
+            </div>
+            <div class="count color3">
+                {{mails}}
+            </div>
+        </div>
+    </div>
+    <div class="body1">
+        <div class="topic2">
+            <div class="topic2-head">
+                Users
+            </div>
+            <hr>
+            <table class="table">
+                <tbody>
+                {%for i in all_users%}
+                  <tr>
+                    <th scope="row">{{loop.index}}</th>
+                    <td>{{i.name}}</td>
+                    <td colspan="2">{{i.email}}</td>
+                  </tr>
+                  {%endfor%}
+                </tbody>
+              </table>
+        </div>
+        <div class="topic2">
+            <div class="topic2-head">
+                Posts
+            </div>
+            <hr>
+            <table class="table">
+                <tbody>
+                {%for i in all_post%}
+                  <tr>
+                    <th scope="row" class="img-holder"><img src="{{i.photo}}" class="dash-img-post"></th>
+                    <td>{{i.jobname}}</td>
+                    <td colspan="2">{{salaryformat(i.salary)}}</td>
+                  </tr>
+                  {%endfor%}
+                </tbody>
+              </table>
+        </div>
+        </div>
+    </div>
+</div>
+{%endblock%}

@@ -1,0 +1,83 @@
+{%extends "base.html"%}
+{% block title %}
+<link href="../static/styles/job_offer.css" rel="stylesheet">
+{%endblock%}
+{% block content %}
+    <div class="content">
+        <div class="head">
+            <div>Company</div>
+            <div>Salary</div>
+        </div>
+        <hr>
+        {%for post in posts%}
+        <div class="jobs">
+            <div class = "job">
+                <div class= "img-text">
+                    <div class="imgholder job job_logo">
+                        <img src="{{post.photo|string}}" class="img">
+                    </div>
+                    <div class = "job_text">
+                        <h2>{{post.jobname}}</h2>
+                        <div class="info">
+                            <div class="info-text">
+                                <span class="info-head">Info:</span> {{post.info}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="salary-head">
+                    <div class= "salary"><span class="salary-head"> {{salaryformat(post.salary)}}/month</span></div>
+                    <div class="cnow">
+                        <form action="/job_offer/contact/{{post.id}}">
+                            <button type="submit" class="btn btn-primary cnow-btn">Contact Now</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            
+        {%endfor%}
+        
+        </div>
+        {% if user.employer or user.email in admin%}
+        <div class="plus">
+            <!-- <button class="plus-button" type="image" src="../static/img/plus1.jpg"></button> -->
+            <button class="plus-button" id="button"></button>
+        </div>
+        {%endif%}
+        
+    </div>
+    <div class="modal1">
+        <div class="post">
+            <header class="mypost"><span>Create a new Offer :</span><span class="xholder"><button class="x close"></button></span></header>
+            <div class="modal-content">
+                <form method="POST" enctype="multipart/form-data">
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Job Name</label>
+                      <input type="text" class="form-control" required name="jobname" id="exampleInputEmail1" autocomplete="off" aria-describedby="emailHelp" placeholder="Job Name">
+                      <!-- <div id="emailHelp" class="form-text"></div> -->
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">Salary</label>
+                      <input type="text" name="salary" class="form-control"required id="exampleInputPassword1" autocomplete="off" placeholder="salary/month">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Insert Image</label>
+                        <input class="form-control" name="file" required type="file" id="formFile">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Job Requirements and Description</label>
+                        <textarea class="form-control" name="description" required autocomplete="off" placeholder="Write The Job Info and Requirements Here" id="floatingTextarea2" style="height: 150px"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary postbtn">Post</button>
+                  </form>
+            </div>
+        </div>
+    </div>
+{%endblock%}
+
+<!-- We are looking for a manager for our coffe store who is confident to speak to the
+                                customers and supervise the workers. Also, he must be punctual and hard working.
+                                Contact us if you are willing -->
+
+                                

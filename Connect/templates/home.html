@@ -1,0 +1,51 @@
+{%extends "base.html"%}
+{%block title%}
+<link href="../static/styles/home.css" rel="stylesheet" >
+{%endblock%}
+{%block content%}
+<header class="header">
+    <div class="header-content">
+        <div class="heading">
+            Connect
+        </div>
+        <div class="tag-line">
+            Get Connected with some of the top firms in the world
+        </div>
+        <div class="button-container">
+           <form action="/login">
+                <button class="btn btn-outline-dark button" type="submit">Join us Today</button>
+            </form>
+        </div>
+    </div>
+
+</header>
+
+<div class="home-body">
+    <div class="part">
+        <div class= "home-img-container">
+            <img src="../static/img/home1.jpg" class="home-img">
+        </div>
+        <div class="home-text">
+            Get the best job that suits you from one of top companies in the world in that field. 
+            Over 10000+ companies are partnered with us and over 500+ job vacancies are posted daily.
+            This is world's one of the best platform to get hired. Make Your resumes stand out from the crowd
+            by signing up with us. Check the Job Offers to know about the job vacancies.
+        </div>
+    </div>
+    <div class="part">
+        <div class="home-text-2">
+            Get the best job that suits you from one of top companies in the world in that field. 
+            Over 10000+ companies are partnered with us and over 500+ job vacancies are posted daily.
+            This is world's one of the best platform to get hired. Make Your resumes stand out from the crowd
+            by signing up with us. Check the Job Offers to know about the job vacancies.
+        </div>
+        <div class= "home-img-container">
+            <img src="../static/img/hom2.jpg" class="home-img2">
+        </div>
+    </div>
+</div>
+
+
+
+
+{%endblock%}

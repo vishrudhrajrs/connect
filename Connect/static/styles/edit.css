@@ -1,0 +1,28 @@
+.content{
+    padding: 30px;
+    font-family: "Montserrat";
+    min-height: 100vh;
+    font-weight: 400;
+}
+
+.cheading{
+    letter-spacing:3px;
+    font-weight: 800 !important;
+}
+.form-group{
+    margin-top: 20px;
+    margin-bottom: 35px;
+}
+
+.mbtn{
+    width:200px;
+    border-radius: 15px !important;
+}
+
+.ta{
+    resize: none;
+}
+
+.mlabel{
+    font-weight: 600
+}

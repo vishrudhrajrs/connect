@@ -1,0 +1,30 @@
+
+{% extends "base.html"%}
+{% block title %}
+<link href="{{ url_for('static', filename='styles/job_offer_contact.css')}}" rel="stylesheet">
+<link href="{{ url_for('static', filename='styles/style.css')}}" rel="stylesheet">
+
+{%endblock%}
+{% block content %}
+    <div class="content">
+        <form method="POST" enctype="multipart/form-data">
+            <div class="form-floating mb-3">
+                <input type="text" autocomplete="off" class="form-control" name="name" id="floatingInput" >
+                <label for="floatingInput">Name</label>
+            </div>
+            <div class="form-floating">
+                <input type="text" autocomplete="off" class="form-control" name="exp" id="floatingPassword">
+                <label for="floatingPassword">Years of experience</label>
+            </div>
+            <div class="mb-3 resume-holder">
+                <label for="formFil" class="form-label resumelabel">Add Resume:</label>
+                <input class="form-control resume" name="file" type="file" placeholder="Add Resume" id="formFil">
+            </div>
+            <div class="form-floating">
+                <textarea class="form-control texta" autocomplete="off" name="desc" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 200px"></textarea>
+                <label for="floatingTextarea2">Description</label>
+            </div>
+            <div class="btnhold"><button class="btn btn-primary mailbtn" type="submit">Send Mail</button></div>
+        </form>
+    </div>
+{%endblock%}
