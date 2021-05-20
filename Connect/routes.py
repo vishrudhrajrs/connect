@@ -1,3 +1,4 @@
+import flask
 from Connect import Sending_Email
 from Connect import app, db, bcrypt
 from flask import render_template, request, redirect, url_for, flash, get_flashed_messages
@@ -169,7 +170,7 @@ def job_offer_contact(id):
             f.write(str(new_content))
             f.close()
 
-        
+        flask.redirect("job_offers")
         print(post.jobname, user)
 
     return render_template("job_offer_contact.html", user=current_user, id=id , admin =ADMIN_USERS)
