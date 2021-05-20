@@ -13,7 +13,9 @@
             <span>{{user.name}}</span>
         </div>
         <div class="type last1">
-            {%if user.employer%}
+            {%if user.email in admin%}
+              Admin
+            {%elif user.employer%}
               Employer
             {%else%}
               Employee
