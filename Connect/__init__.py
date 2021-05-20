@@ -12,7 +12,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['UPLOAD_FOLDER'] = r".\Connect\static\img\uploads"
 db = SQLAlchemy(app)
 
-bcrypt = Bcrypt(app) #hasing function
+bcrypt = Bcrypt(app) #hasing function 
 
 login_manager = LoginManager()
 login_manager.login_view="login_page"
