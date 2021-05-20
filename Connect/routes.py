@@ -14,6 +14,7 @@ EMAIL = "vishrudhrajrs14@gmail.com"
 PASSWORD = "myvobognjuekupfs"
 ADMIN_USERS = ["vishrudhrajrs14@gmail.com"]
 Mails_sent=0
+SENTMAIL = False
 
 def salaryformat(salary): #10000 --> 10,000 : 100000 --> 1,00,000
     sal = str(salary)[::-1]
@@ -35,6 +36,7 @@ def home_page():
 @app.route('/job_offers', methods=["GET", "POST"])
 @login_required
 def job_offers():
+    global SENTMAIL
     csspath= "../static/img/uploads/"
     if request.method == 'POST':
         print("working")
@@ -51,6 +53,9 @@ def job_offers():
             db.session.commit()
 
     posts = Post.query.all()
+    if SENTMAIL == True:
+        flash("Mail Sent successfully", category="danger")
+        SENTMAIL = False
     return render_template("job_offers.html", posts=posts, user=current_user ,salaryformat=salaryformat , admin =ADMIN_USERS)
 
 @app.route('/about_us')
@@ -140,6 +145,7 @@ def logout():
 @app.route("/job_offer/contact/<int:id>" ,methods=["GET", "POST"])
 @login_required
 def job_offer_contact(id):
+    global SENTMAIL
     print("Working out")
     if request.method =="POST":
         print("Working in")
@@ -169,9 +175,9 @@ def job_offer_contact(id):
             new_content= contents+1
             f.write(str(new_content))
             f.close()
-
-        flask.redirect("job_offers")
         print(post.jobname, user)
+        SENTMAIL = True
+        return flask.redirect("/job_offers")
 
     return render_template("job_offer_contact.html", user=current_user, id=id , admin =ADMIN_USERS)
 
@@ -263,3 +269,4 @@ def dashboard():
     user_length = len(all_users)
     post_length = len(all_post)
     return render_template("dashboard.html", user=current_user,admin=ADMIN_USERS ,user_length=user_length ,post_length=post_length ,mails=mails ,all_users =all_users, all_post =all_post ,salaryformat=salaryformat)
+

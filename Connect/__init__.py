@@ -7,8 +7,8 @@ import os
 
 app = Flask(__name__)
 app.config["SECRET_KEY"]="12345678abcdef"
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
-# app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:123456@localhost/job_finder"
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:123456@localhost/job_finder"
 app.config['UPLOAD_FOLDER'] = r".\Connect\static\img\uploads"
 db = SQLAlchemy(app)
 
