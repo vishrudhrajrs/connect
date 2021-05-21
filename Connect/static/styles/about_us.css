@@ -1,0 +1,35 @@
+
+.header { 
+    display:flex; 
+    justify-content:space-around;
+    align-items:center;
+    height:90vh;
+    background: linear-gradient(to right bottom, #000000b2, #2c2c2ca9, #000000b7), 
+    url(../img/aboutusbg.jpg) 
+    no-repeat center center fixed; 
+    background-size: cover;
+    /* background-color: black; */
+  }
+
+.proimg{
+    border-radius: 50%;
+    background-color:#4169e1;
+    height: 160px;
+    width:160px;
+    margin-bottom: 20px;
+}
+
+.person{
+    width:23vw;
+    height:60vh;
+    background-color: white;
+    display: flex;
+    padding: 35px 15px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.abt-txt{
+    font-family: "Montserrat";
+    text-align: center;
+}

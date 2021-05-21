@@ -11,7 +11,7 @@ body{
     width:250px;
     color:white !important;
     border:none;
-    background-color: #00000067;
+    background-color: #00000067; 
     border-radius: 15px;
     font-size: 20px;
     font-family: "Inter", sans-serif;
@@ -32,6 +32,7 @@ body{
     /* background-color: black; */
   }
 
+  
   .heading{
       font-size: 60px;
       font-family: 'Krona One', sans-serif;

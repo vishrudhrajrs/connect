@@ -150,7 +150,6 @@ def otp(email, password, name, employer):
         for i in password.split(","):
                 rpassword += str(chr(int(i)))
         print(rpassword)
-        password_hash = bcrypt.generate_password_hash(rpassword)
         otp = otpgen()
         OTPS[email] = otp
         msg = EmailMessage()
@@ -168,8 +167,7 @@ def otp(email, password, name, employer):
         form_otp = request.form.get("otp")
         print(form_otp)
         if OTPS.get(email)  == int(form_otp):
-            
-            password_hash = bcrypt.generate_password_hash(rpassword)
+            password_hash = bcrypt.generate_password_hash(rpassword).decode("utf-8")
             print(password_hash)
             user = Users(email=email,
                         name=name,
