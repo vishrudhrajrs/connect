@@ -1,4 +1,10 @@
 import flask
+import smtplib
+import os
+import random
+import time
+import threading
+
 from Connect import Sending_Email
 from Connect import app, db, bcrypt
 from flask import render_template, request, redirect, url_for, flash, get_flashed_messages
@@ -6,15 +12,34 @@ from Connect.models import Users, Post
 from Connect.forms import RegisterForm, Login
 from flask_login import login_user,login_required,logout_user,current_user
 from email.message import EmailMessage
-import smtplib
-import os
 
-
+rpassword=""
+OTPS = {}
 EMAIL = "vishrudhrajrs14@gmail.com"
 PASSWORD = "myvobognjuekupfs"
 ADMIN_USERS = ["vishrudhrajrs14@gmail.com"]
 Mails_sent=0
 SENTMAIL = False
+
+def remove_otp(user):
+    global OTPS
+    time.sleep(600)
+    if OTPS.get(user):
+        del OTPS[user]
+        print("deleted")
+
+
+# otp_update = threading.Thread(target=remove_otp)
+# otp_update.start()
+
+def otpgen():
+    global OTPS
+    otp = random.randint(100000, 999999)
+    while otp in OTPS.values():
+        otp = random.randint(100000, 999999)
+    return otp
+
+    
 
 def salaryformat(salary): #10000 --> 10,000 : 100000 --> 1,00,000
     sal = str(salary)[::-1]
@@ -88,16 +113,22 @@ def register():
     
 
     if form.validate_on_submit():
-        password_hash = bcrypt.generate_password_hash(form.password1.data)
-        user = Users(email=form.email_address.data,
-                    name=form.name.data,
-                    employer =data_check,
-                    password=password_hash)
 
-        db.session.add(user)
-        db.session.commit()
-        login_user(user, remember=True)
-        return redirect(url_for("job_offers"))
+        # password_hash = bcrypt.generate_password_hash(form.password1.data)
+        # user = Users(email=form.email_address.data,
+        #             name=form.name.data,
+        #             employer =data_check,
+        #             password=password_hash)
+
+        # db.session.add(user)
+        # db.session.commit()
+        # login_user(user, remember=True)
+        password_hash_number = []
+        for i in form.password1.data:
+            password_hash_number.append(str(ord(i)))
+
+        print(",".join(password_hash_number))
+        return redirect(url_for("otp", email = form.email_address.data, password=",".join(password_hash_number), name=form.name.data,employer =data_check))
 
     if form.password1.data != form.password2.data:
             flash("Password and Confirm Password are not same", category="danger")
@@ -110,7 +141,52 @@ def register():
     return render_template("register.html", form=form , admin =ADMIN_USERS)
 
 
-@app.route('/login', methods=['GET', 'Post'])
+@app.route('/otp/<email>/<password>/<name>/<employer>', methods=['GET', "POST"])
+def otp(email, password, name, employer):
+    global rpassword
+    if request.method == "GET":
+        global OTPS
+        rpassword=""
+        for i in password.split(","):
+                rpassword += str(chr(int(i)))
+        print(rpassword)
+        password_hash = bcrypt.generate_password_hash(rpassword)
+        otp = otpgen()
+        OTPS[email] = otp
+        msg = EmailMessage()
+        msg["Subject"] = 'OTP for signing up with connect'
+        msg['From'] = EMAIL
+        msg["To"] = email
+        msg.set_content(f"Your OTP is {otp}")
+        with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+                smtp.login(EMAIL, PASSWORD)
+                smtp.send_message(msg)
+                
+        removeotp = threading.Thread(target=remove_otp, args=[email])
+        removeotp.start()
+    if request.method == "POST":
+        form_otp = request.form.get("otp")
+        print(form_otp)
+        if OTPS.get(email)  == int(form_otp):
+            
+            password_hash = bcrypt.generate_password_hash(rpassword)
+            print(password_hash)
+            user = Users(email=email,
+                        name=name,
+                        employer =bool(employer),
+                        password=password_hash)
+
+            db.session.add(user)
+            db.session.commit()
+            login_user(user, remember=True)
+            return redirect(url_for("job_offers"))
+
+        else:
+            flash("Invalid OTP", category="danger")
+
+    return render_template("otp.html")
+
+@app.route('/login', methods=['GET', 'Post']) 
 def login_page():
     form = Login()
 

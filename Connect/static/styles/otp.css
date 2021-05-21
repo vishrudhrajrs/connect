@@ -1,0 +1,53 @@
+*{
+    margin: 0px;
+    padding:0px;
+}
+
+body{
+    background: url(../img/register_bg.jpg) no-repeat center center fixed; 
+    background-size: cover;
+    display:flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.content{
+    background-color:white;
+    padding: 20px 50px;
+    font-family: "Montserrat";
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    font-weight: 600;
+    border-radius: 25px;
+    border:1px solid black;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.otp-img{
+    width:120px;
+}
+
+.otp-text{
+    margin-top: 20px;
+}
+
+form{
+    margin-top: 10px;
+
+    
+}
+
+input{
+    text-align:center;
+}
+
+.otp{
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+}
