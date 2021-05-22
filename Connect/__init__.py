@@ -22,17 +22,17 @@ bcrypt = Bcrypt(app) #hasing function
 login_manager = LoginManager()
 login_manager.login_view="login_page"
 login_manager.init_app(app)
-dbx = dropbox.Dropbox("gyaaB9GQxmEAAAAAAAAAAa3-aawnf4mAyKd0qNZecnT_ClaoXfvHg8YIEcexxmFe")
+# dbx = dropbox.Dropbox("gyaaB9GQxmEAAAAAAAAAAa3-aawnf4mAyKd0qNZecnT_ClaoXfvHg8YIEcexxmFe")
 
-for i in dbx.files_list_folder("").entries:
-    print("running")
-    if not (os.path.exists("/app/Connect/static/img/uploads"+i.path_lower)):
-        _,f=dbx.files_download(i.path_lower)
-        print("success")
-        f = f.content
-        print(type(f))
-        img = Image.open(io.BytesIO(f))
-        img.save("/app/Connect/static/img/uploads"+i.path_lower)
+# for i in dbx.files_list_folder("").entries:
+#     print("running")
+#     if not (os.path.exists("/app/Connect/static/img/uploads"+i.path_lower)):
+#         _,f=dbx.files_download(i.path_lower)
+#         print("success")
+#         f = f.content
+#         print(type(f))
+#         img = Image.open(io.BytesIO(f))
+#         img.save("/app/Connect/static/img/uploads"+i.path_lower)
 
 
 from Connect.models import Users
