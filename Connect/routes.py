@@ -69,7 +69,7 @@ def job_offers():
         desc=request.form.get("description")
         if request.files:
             image = request.files["file"]
-            path = os.path.join(app.config["UPLOAD_FOLDER"] , image.filename)
+            path = os.path.abspath(os.path.join(app.config["UPLOAD_FOLDER"] , image.filename))
             csspath += image.filename
             image.save(path)
             new_post = Post(salary=salary, info=desc,jobname=job_name.capitalize(), user=current_user.id,photo=csspath)
@@ -329,6 +329,56 @@ def profile_edit():
 
 
     return render_template("profile_edit.html", user=current_user , msg=msg , admin =ADMIN_USERS)
+
+# edit_password = ""
+
+# @app.route('/otp/<email>/<password>/<name>/<employer>', methods=['GET', "POST"])
+# @login_required
+# def profile_otp_edit(email, password, name, employer):
+#     global edit_password
+#     if request.method == "GET":
+#         global OTPS
+#         rpassword=""
+#         for i in password.split(","):
+#                 rpassword += str(chr(int(i))) 
+#         print(rpassword)
+#         otp = otpgen()
+#         OTPS[email] = otp
+#         msg = EmailMessage()
+#         msg["Subject"] = 'OTP for signing up with connect'
+#         msg['From'] = EMAIL
+#         msg["To"] = email
+#         msg.set_content(f"Your OTP is {otp} . Your OTP will expire in 10 minutes")
+#         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+#                 smtp.login(EMAIL, PASSWORD)
+#                 smtp.send_message(msg)
+                
+#         removeotp = threading.Thread(target=remove_otp, args=[email])
+#         removeotp.start()
+#     if request.method == "POST":
+#         form_otp = request.form.get("otp")
+#         print(form_otp)
+#         if OTPS.get(email)  == int(form_otp):
+#             if employer == "False":
+#                 employer = False
+#             else:
+#                 employer = True
+#             password_hash = bcrypt.generate_password_hash(rpassword).decode("utf-8")
+#             print(password_hash)
+#             user = Users(email=email,
+#                         name=name,
+#                         employer =employer,
+#                         password=password_hash)
+
+#             db.session.add(user)
+#             db.session.commit()
+#             login_user(user, remember=True)
+#             return redirect(url_for("job_offers"))
+
+#         else:
+#             flash("Invalid OTP", category="danger")
+#     return render_template("otp.html")
+
 
 @app.route("/dashboard")
 @login_required
