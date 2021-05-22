@@ -289,6 +289,7 @@ def editpost(id):
 def profile():
     return render_template("profile.html", user=current_user, admin =ADMIN_USERS)
     
+
 @app.route("/profile/edit", methods=["GET", "POST"])
 @login_required
 def profile_edit():
@@ -316,68 +317,75 @@ def profile_edit():
         elif new_password != new_confirm_password:
             msg = "Password Not matching"
         else:
-            user = Users.query.filter_by(id=current_user.id).first()
-            user.name = name
-            user.email = email
-            user.employer = data_check
+            # user = Users.query.filter_by(id=current_user.id).first()
+            # user.name = name
+            # user.email = email
+            # user.employer = data_check
+            passwordnumber=[]
             if new_password !="":
-                user.password = bcrypt.generate_password_hash(new_password)
+                for i in new_password:
+                    passwordnumber.append(str(ord(i)))
+                passwordnumber = ",".join(passwordnumber)
+            # db.session.commit()
+            else:
+                passwordnumber = 0
+            
 
-            db.session.commit()
-            return redirect(url_for("profile"))
+            return redirect(url_for("profile_otp_edit", email = email, password=passwordnumber, name=name,employer =data_check))
+
                 
 
 
     return render_template("profile_edit.html", user=current_user , msg=msg , admin =ADMIN_USERS)
 
-# edit_password = ""
+edit_password = ""
 
-# @app.route('/otp/<email>/<password>/<name>/<employer>', methods=['GET', "POST"])
-# @login_required
-# def profile_otp_edit(email, password, name, employer):
-#     global edit_password
-#     if request.method == "GET":
-#         global OTPS
-#         rpassword=""
-#         for i in password.split(","):
-#                 rpassword += str(chr(int(i))) 
-#         print(rpassword)
-#         otp = otpgen()
-#         OTPS[email] = otp
-#         msg = EmailMessage()
-#         msg["Subject"] = 'OTP for signing up with connect'
-#         msg['From'] = EMAIL
-#         msg["To"] = email
-#         msg.set_content(f"Your OTP is {otp} . Your OTP will expire in 10 minutes")
-#         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
-#                 smtp.login(EMAIL, PASSWORD)
-#                 smtp.send_message(msg)
+@app.route('/profile_edit_otp/<email>/<password>/<name>/<employer>', methods=['GET', "POST"])
+@login_required
+def profile_otp_edit(email, password, name, employer):
+    global edit_password
+    if request.method == "GET":
+        global OTPS
+        edit_password=""
+        if password != "0":
+            for i in password.split(","):
+                    edit_password += str(chr(int(i))) 
+        print(edit_password)
+        otp = otpgen()
+        OTPS[email] = otp
+        msg = EmailMessage()
+        msg["Subject"] = 'OTP for signing up with connect'
+        msg['From'] = EMAIL
+        msg["To"] = email
+        msg.set_content(f"Your OTP is {otp} . Your OTP will expire in 10 minutes")
+        with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+                smtp.login(EMAIL, PASSWORD)
+                smtp.send_message(msg)
                 
-#         removeotp = threading.Thread(target=remove_otp, args=[email])
-#         removeotp.start()
-#     if request.method == "POST":
-#         form_otp = request.form.get("otp")
-#         print(form_otp)
-#         if OTPS.get(email)  == int(form_otp):
-#             if employer == "False":
-#                 employer = False
-#             else:
-#                 employer = True
-#             password_hash = bcrypt.generate_password_hash(rpassword).decode("utf-8")
-#             print(password_hash)
-#             user = Users(email=email,
-#                         name=name,
-#                         employer =employer,
-#                         password=password_hash)
+        removeotp = threading.Thread(target=remove_otp, args=[email])
+        removeotp.start()
+    if request.method == "POST":
+        form_otp = request.form.get("otp")
+        print(form_otp)
+        if OTPS.get(email)  == int(form_otp):
+            if employer == "False":
+                employer = False
+            else:
+                employer = True
+            user = Users.query.filter_by(id=current_user.id).first()
+            user.name = name
+            user.email = email
+            user.employer = employer
+            if edit_password:
+                print("test", edit_password)
+                password_hash = bcrypt.generate_password_hash(edit_password).decode("utf-8")
+                user.password = password_hash
+            db.session.commit()
+            return redirect(url_for("profile"))
 
-#             db.session.add(user)
-#             db.session.commit()
-#             login_user(user, remember=True)
-#             return redirect(url_for("job_offers"))
-
-#         else:
-#             flash("Invalid OTP", category="danger")
-#     return render_template("otp.html")
+        else:
+            flash("Invalid OTP", category="danger")
+    return render_template("otp.html")
 
 
 @app.route("/dashboard")
