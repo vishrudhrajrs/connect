@@ -95,7 +95,6 @@ body{
       }
 
       .home-text-2{
-        height: auto;
         margin-top: auto;
         margin-bottom: auto;
         margin-left: 80px;
@@ -105,5 +104,6 @@ body{
         justify-content: center;
         font-family: "Roboto", sans-serif;
         font-weight: bold;
-        text-align:center
+        text-align:center;
+        word-wrap: break-word;
         }

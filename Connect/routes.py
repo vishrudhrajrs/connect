@@ -26,7 +26,6 @@ def remove_otp(user):
     time.sleep(600)
     if OTPS.get(user):
         del OTPS[user]
-        print("deleted")
 
 
 # otp_update = threading.Thread(target=remove_otp)
@@ -114,20 +113,10 @@ def register():
 
     if form.validate_on_submit():
 
-        # password_hash = bcrypt.generate_password_hash(form.password1.data)
-        # user = Users(email=form.email_address.data,
-        #             name=form.name.data,
-        #             employer =data_check,
-        #             password=password_hash)
-
-        # db.session.add(user)
-        # db.session.commit()
-        # login_user(user, remember=True)
         password_hash_number = []
         for i in form.password1.data:
             password_hash_number.append(str(ord(i)))
 
-        print(",".join(password_hash_number))
         return redirect(url_for("otp", email = form.email_address.data, password=",".join(password_hash_number), name=form.name.data,employer =data_check))
 
     if form.password1.data != form.password2.data:
@@ -148,7 +137,7 @@ def otp(email, password, name, employer):
         global OTPS
         rpassword=""
         for i in password.split(","):
-                rpassword += str(chr(int(i)))
+                rpassword += str(chr(int(i))) 
         print(rpassword)
         otp = otpgen()
         OTPS[email] = otp
@@ -156,7 +145,7 @@ def otp(email, password, name, employer):
         msg["Subject"] = 'OTP for signing up with connect'
         msg['From'] = EMAIL
         msg["To"] = email
-        msg.set_content(f"Your OTP is {otp}")
+        msg.set_content(f"Your OTP is {otp} . Your OTP will expire in 10 minutes")
         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
                 smtp.login(EMAIL, PASSWORD)
                 smtp.send_message(msg)
@@ -244,7 +233,6 @@ def job_offer_contact(id):
             f = open("count.txt", "r")
             contents = int(f.read())
             f.close()
-            print(contents)
             f = open("count.txt", "w")
             new_content= contents+1
             f.write(str(new_content))
@@ -343,4 +331,13 @@ def dashboard():
     user_length = len(all_users)
     post_length = len(all_post)
     return render_template("dashboard.html", user=current_user,admin=ADMIN_USERS ,user_length=user_length ,post_length=post_length ,mails=mails ,all_users =all_users, all_post =all_post ,salaryformat=salaryformat)
+
+
+
+
+#nbdskjfbdskjfbdsfmsd/fsdlf,jsldkjfasf/sdfksd;ljflkdsjf
+
+
+
+#abcdef
 
