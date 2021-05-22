@@ -156,11 +156,15 @@ def otp(email, password, name, employer):
         form_otp = request.form.get("otp")
         print(form_otp)
         if OTPS.get(email)  == int(form_otp):
+            if employer == "False":
+                employer = False
+            else:
+                employer = True
             password_hash = bcrypt.generate_password_hash(rpassword).decode("utf-8")
             print(password_hash)
             user = Users(email=email,
                         name=name,
-                        employer =bool(employer),
+                        employer =employer,
                         password=password_hash)
 
             db.session.add(user)
