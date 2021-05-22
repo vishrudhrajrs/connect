@@ -1,9 +1,11 @@
 import flask
+import dropbox
 import smtplib
 import os
 import random
 import time
 import threading
+
 
 from Connect import Sending_Email
 from Connect import app, db, bcrypt
@@ -20,6 +22,9 @@ PASSWORD = "myvobognjuekupfs"
 ADMIN_USERS = ["vishrudhrajrs14@gmail.com"]
 Mails_sent=0
 SENTMAIL = False
+
+dbx = dropbox.Dropbox("gyaaB9GQxmEAAAAAAAAAAa3-aawnf4mAyKd0qNZecnT_ClaoXfvHg8YIEcexxmFe")
+
 
 def remove_otp(user):
     global OTPS
@@ -57,11 +62,16 @@ def salaryformat(salary): #10000 --> 10,000 : 100000 --> 1,00,000
 def home_page():
     return render_template("home.html", user=current_user , admin =ADMIN_USERS)
 
+
+computer_path = "./password.png"
+dropbox_path = "/img1.png"
+
 @app.route('/job_offers', methods=["GET", "POST"])
 @login_required
 def job_offers():
     global SENTMAIL
     csspath= "../static/img/uploads/"
+
     if request.method == 'POST':
         print("working")
         job_name=request.form.get("jobname")
@@ -69,6 +79,8 @@ def job_offers():
         desc=request.form.get("description")
         if request.files:
             image = request.files["file"]
+            filename= image.filename
+            dbx.files_upload(image.read(), f"/{filename}")
             path = os.path.abspath(os.path.join(app.config["UPLOAD_FOLDER"] , image.filename))
             csspath += image.filename
             image.save(path)
