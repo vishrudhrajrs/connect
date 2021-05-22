@@ -259,7 +259,7 @@ def myposts():
 @login_required
 def mypostsdelete(id):
     post = Post.query.filter_by(id=id).first()
-    if current_user.id == post.user:
+    if current_user.id == post.user or current_user.email in ADMIN_USERS:
         db.session.delete(post)
         db.session.commit()
         return redirect(url_for("myposts"))
@@ -270,7 +270,7 @@ def mypostsdelete(id):
 def editpost(id):
         post = Post.query.filter_by(id=id).first()
         print("working out")
-        if current_user.id == post.user and request.method == "POST":
+        if (current_user.id == post.user or current_user.email in ADMIN_USERS) and request.method == "POST":
             print("Working in")
             post.jobname = request.form.get("name")
             post.salary=request.form.get("salary")
