@@ -24,6 +24,15 @@
                 <label for="exampleFormControlInput1" class="mlabel">Email</label>
                 <input type="email" autocomplete="off" value="{{user.email}}"  class="form-control" name="email" id="exampleFormControlInput1" placeholder="name@example.com">
             </div>
+            {%if user.employer%}
+            <div class="inputs extra extra1 ">
+                Are you a employer :     <input class="check" checked value="checked" type="checkbox">
+            </div>
+            {%else%}
+            <div class="inputs extra extra1 ">
+                Are you a employer :     <input class="check" name="checkbox" type="checkbox">
+            </div>
+            {%endif%}
             <div class="form-group">
                 <label for="exampleFormControlInput1" class="mlabel">Old Password</label>
                 <input type="password" autocomplete="off"  class="form-control" name="old_password" id="exampleFormControlInput1" required placeholder="Required">

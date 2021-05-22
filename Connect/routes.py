@@ -299,6 +299,12 @@ def profile_edit():
         old_password = request.form.get("old_password")
         new_password = request.form.get("new_password")
         new_confirm_password = request.form.get("new_confirm_password")
+        data_check=""
+        data_check = request.form.get("checkbox")
+        if data_check != None:
+            data_check = True
+        else:
+            data_check= False
         if len(name) < 2 or len(name) > 35:
             msg = "Invalid Name" 
         elif email.find("@gmail.com") == -1:
@@ -313,6 +319,7 @@ def profile_edit():
             user = Users.query.filter_by(id=current_user.id).first()
             user.name = name
             user.email = email
+            user.employer = data_check
             if new_password !="":
                 user.password = bcrypt.generate_password_hash(new_password)
 
