@@ -70,7 +70,7 @@ dropbox_path = "/img1.png"
 @login_required
 def job_offers():
     global SENTMAIL
-    csspath= "../static/img/uploads/"
+    csspath= "/app/Connect/static/img/uploads/"
 
     if request.method == 'POST':
         print("working")
