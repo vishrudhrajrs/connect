@@ -5,6 +5,9 @@ import os
 import random
 import time
 import threading
+import PIL.Image as Image
+import io
+import dropbox
 
 
 from Connect import Sending_Email
@@ -65,12 +68,23 @@ def home_page():
 
 computer_path = "./password.png"
 dropbox_path = "/img1.png"
+dbx = dropbox.Dropbox("gyaaB9GQxmEAAAAAAAAAAa3-aawnf4mAyKd0qNZecnT_ClaoXfvHg8YIEcexxmFe")
 
 @app.route('/job_offers', methods=["GET", "POST"])
 @login_required
 def job_offers():
     global SENTMAIL
     csspath= "/app/Connect/static/img/uploads/"
+    if request.method =="GET":
+        for i in dbx.files_list_folder("").entries:
+            print("running")
+            if not (os.path.exists("/app/Connect/static/img/uploads"+i.path_lower)):
+                _,f=dbx.files_download(i.path_lower)
+                print("success")
+                f = f.content
+                print(type(f))
+                img = Image.open(io.BytesIO(f))
+                img.save("/app/Connect/static/img/uploads"+i.path_lower)
 
     if request.method == 'POST':
         print("working")
@@ -81,7 +95,7 @@ def job_offers():
             image = request.files["file"]
             filename= image.filename
             dbx.files_upload(image.read(), f"/{filename}")
-            path = os.path.abspath(os.path.join(app.config["UPLOAD_FOLDER"] , filename))
+            path = os.path.join(app.config["UPLOAD_FOLDER"] , filename)
             csspath += image.filename
             image.save(path)
             new_post = Post(salary=salary, info=desc,jobname=job_name.capitalize(), user=current_user.id,photo=csspath)
