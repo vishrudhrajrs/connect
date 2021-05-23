@@ -36,8 +36,8 @@ body{
     margin-left:40px;
 }
 .job_logo{
-    height: 150px;
-    width:150px;
+    height: 150px !important;
+    width:150px !important;
     border-radius:50%;
 
 }
@@ -48,7 +48,7 @@ body{
     align-items: center;
 }
 .img{
-    height:140%;
+    height:150%;
 }
 .salary-head{
     margin-left: 40px;
