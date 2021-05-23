@@ -81,7 +81,7 @@ def job_offers():
             image = request.files["file"]
             filename= image.filename
             dbx.files_upload(image.read(), f"/{filename}")
-            path = os.path.join(app.config["UPLOAD_FOLDER"] , image.filename)
+            path = os.path.abspath(os.path.join(app.config["UPLOAD_FOLDER"] , image.filename))
             csspath += image.filename
             image.save(path)
             new_post = Post(salary=salary, info=desc,jobname=job_name.capitalize(), user=current_user.id,photo=csspath)
