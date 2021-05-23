@@ -37,7 +37,7 @@ body{
 }
 .job_logo{
     height: 150px;
-    width:190px;
+    width:150px;
     border-radius:50%;
 
 }
@@ -103,9 +103,10 @@ hr{
 }
 
 .modal1{
-    position: absolute;
+    position: fixed;
     width: 100vw;
     height: 100vh;
+    left: 0;
     top: 0;
     background-color: rgba(0, 0, 0, 0.521);
     display: none;
@@ -173,6 +174,12 @@ hr{
 .modal-content::-webkit-scrollbar {
     display: none;
   }
+
+html::-webkit-scrollbar {
+    display: none;
+}
+
+
 
 .otextarea{
     margin-top: 25px !important;
