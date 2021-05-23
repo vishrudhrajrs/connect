@@ -78,13 +78,13 @@ def job_offers():
     if request.method =="GET":
         for i in dbx.files_list_folder("").entries:
             print("running")
-            if not (os.path.exists("/app/Connect/static/img/uploads"+i.path_lower)):
+            if not (os.path.exists("./Connect/static/img/uploads"+i.path_lower)):
                 _,f=dbx.files_download(i.path_lower)
                 print("success")
                 f = f.content
                 print(type(f))
                 img = Image.open(io.BytesIO(f))
-                img.save("/app/Connect/static/img/uploads"+i.path_lower)
+                img.save("./Connect/static/img/uploads"+i.path_lower)
 
     if request.method == 'POST':
         print("working")
