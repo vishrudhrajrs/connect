@@ -11,7 +11,7 @@ class Users(db.Model, UserMixin):
     posts = db.relationship("Post", backref="owned_user", lazy=True)
 
     def __repr__(self):
-        return str('Name '+str(self.name))
+        return str('Name '+str(self.name)) 
 
 
 

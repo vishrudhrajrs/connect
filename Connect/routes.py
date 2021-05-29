@@ -30,7 +30,7 @@ dbx = dropbox.Dropbox("gyaaB9GQxmEAAAAAAAAAAa3-aawnf4mAyKd0qNZecnT_ClaoXfvHg8YIE
 
 
 def remove_otp(user):
-    global OTPS
+    global OTPS 
     time.sleep(600)
     if OTPS.get(user):
         del OTPS[user]
