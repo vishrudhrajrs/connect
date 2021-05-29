@@ -127,6 +127,11 @@ def contact_us():
     else:
         return render_template("contact_us.html", user=current_user , admin =ADMIN_USERS)
 
+@app.route("/feedback_received")
+@login_required
+def feed_back():
+    return render_template("feedback_received.html")
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     form = RegisterForm()
