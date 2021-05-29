@@ -22,7 +22,7 @@ rpassword=""
 OTPS = {}
 EMAIL = "vishrudhrajrs14@gmail.com"
 PASSWORD = "myvobognjuekupfs"
-ADMIN_USERS = ["vishrudhrajrs14@gmail.com"]
+ADMIN_USERS = ["vishrudhrajrs14@gmail.com", "miruthul555@gmail.com", "art04adp@gmail.com"]
 Mails_sent=0
 SENTMAIL = False
 
