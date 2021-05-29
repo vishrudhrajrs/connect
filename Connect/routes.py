@@ -130,7 +130,7 @@ def contact_us():
 @app.route("/feedback_received")
 @login_required
 def feed_back():
-    return render_template("feedback_received.html")
+    return render_template("feedback_received.html", user=current_user , admin =ADMIN_USERS)
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
